@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VISHAL SINGH RAJPUUROHIT - ELITE PERSONAL PORTFOLIO SCRIPT (PRO EDITION)
+   VISHAL SINGH RAJPUROHIT - ELITE PERSONAL PORTFOLIO SCRIPT (PRO EDITION)
    Pure Vanilla JavaScript (ES6+) - Zero External Dependencies
    Features: Web Audio Synthesizer, CLI Terminal, Code IDE, Matrix Rain,
              3D Tilt, Spotlight Cards, Photo Switcher, Live Search & Stats
@@ -154,50 +154,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const shortcutsCloseBtn = document.getElementById('shortcutsCloseBtn');
 
     // 2.1 Letter-by-Letter Hero Name Decryption & Assembly
-    function assembleHeroName(startDelay = 120) {
+    function assembleHeroName(startDelay = 60) {
         if (!heroNameAssembled) return;
-        const fullName = heroNameAssembled.getAttribute('data-text') || "Vishal Singh Rajpuurohit";
+        const fullName = heroNameAssembled.getAttribute('data-text') || "Vishal Singh Rajpurohit";
         const glyphPool = '01X$#@<>{}[]*+=_%!&~^/?|\\';
         
+        const words = fullName.split(' ');
         heroNameAssembled.innerHTML = '';
-        const charSpans = [];
+        const allCharSpans = [];
 
-        for (let i = 0; i < fullName.length; i++) {
-            const char = fullName[i];
-            const span = document.createElement('span');
-            span.className = 'intro-char';
-            if (char === ' ') {
-                span.classList.add('char-space');
-                span.innerHTML = '&nbsp;';
-                span.dataset.final = ' ';
-            } else {
+        words.forEach((word) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'name-word';
+
+            for (let i = 0; i < word.length; i++) {
+                const char = word[i];
+                const span = document.createElement('span');
+                span.className = 'intro-char intro-char-cycling';
                 span.textContent = glyphPool[Math.floor(Math.random() * glyphPool.length)];
                 span.dataset.final = char;
+                wordSpan.appendChild(span);
+                allCharSpans.push(span);
             }
-            heroNameAssembled.appendChild(span);
-            charSpans.push(span);
-        }
 
-        // Staggered resolution of each letter
-        charSpans.forEach((span, index) => {
-            if (span.classList.contains('char-space')) return;
+            heroNameAssembled.appendChild(wordSpan);
+        });
 
-            const lockTime = startDelay + index * 40;
+        // Staggered cybernetic resolution of each character
+        allCharSpans.forEach((span, index) => {
+            const lockTime = startDelay + index * 45;
             const cycleInterval = setInterval(() => {
                 span.textContent = glyphPool[Math.floor(Math.random() * glyphPool.length)];
-            }, 30);
+            }, 35);
 
             setTimeout(() => {
                 clearInterval(cycleInterval);
                 span.textContent = span.dataset.final;
+                span.classList.remove('intro-char-cycling');
                 span.classList.add('char-locked', 'char-spark');
-                soundEffects.terminalKey();
+                if (window.soundEffects && soundEffects.terminalKey) {
+                    soundEffects.terminalKey();
+                }
 
-                setTimeout(() => span.classList.remove('char-spark'), 350);
+                setTimeout(() => span.classList.remove('char-spark'), 300);
 
-                if (index === charSpans.length - 1) {
+                if (index === allCharSpans.length - 1) {
                     if (heroNameHeading) heroNameHeading.classList.add('assembled-complete');
-                    soundEffects.chime();
+                    if (window.soundEffects && soundEffects.chime) {
+                        soundEffects.chime();
+                    }
                 }
             }, lockTime);
         });
@@ -259,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             initAudioContext();
             soundEffects.terminalKey();
             if (reticleStatus) {
-                reticleStatus.textContent = '⚡ IDENTITY CONFIRMED: VISHAL S. RAJPUUROHIT';
+                reticleStatus.textContent = '⚡ IDENTITY CONFIRMED: VISHAL S. RAJPUROHIT';
                 reticleStatus.parentElement.style.borderColor = '#00ff88';
                 reticleStatus.parentElement.style.boxShadow = '0 0 20px rgba(0,255,136,0.6)';
                 setTimeout(() => {
@@ -1030,7 +1035,7 @@ shield = NetworkDefenseEngine()`,
 
     const commands = {
         help: `Available Commands:
-  - about       : Brief overview of Vishal Singh Rajpuurohit
+  - about       : Brief overview of Vishal Singh Rajpurohit
   - skills      : High-level overview of core competencies
   - projects    : Showcase of top software & AI applications
   - secops      : Jump to Cyber Defense Operations & Threat Lab
@@ -1053,7 +1058,7 @@ shield = NetworkDefenseEngine()`,
   - theme [val] : Switch themes (options: dark, cyber, light)
   - sudo hire   : Offer interview / job proposition
   - clear       : Clear terminal history`,
-        about: `Vishal Singh Rajpuurohit - Computer Science Engineer
+        about: `Vishal Singh Rajpurohit - Computer Science Engineer
 Focus: Artificial Intelligence, Machine Learning & Cybersecurity Systems.
 Graduation: B.Tech in CSE (CGPA: 8.9/10.0)
 Based in: Mumbai, India | Open for Full-Time Roles Worldwide`,
@@ -1161,7 +1166,7 @@ Type 'secops' to inspect full defense mitigations in browser.`,
         resume: () => {
             const dl = document.getElementById('downloadResumeBtn');
             if (dl) dl.click();
-            return `[SUCCESS] Downloading Vishal_Singh_Rajpuurohit_Resume.pdf...`;
+            return `[SUCCESS] Downloading Vishal_Singh_Rajpurohit_Resume.pdf...`;
         },
         matrix: () => {
             toggleMatrixRain();
@@ -1458,7 +1463,7 @@ Looking forward to discussing the role! 🚀`;
                         <p style="color: var(--primary-cyan); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">${data.platform}</p>
                         <p style="color: var(--text-dim); font-size: 0.85rem; font-family: var(--font-code);">Credential ID: ${data.id} | Issued Date: ${data.date}</p>
                         <div style="margin-top: 24px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">Verified credential awarded to <strong>Vishal Singh Rajpuurohit</strong> for demonstrated expertise in advanced algorithms and computer science principles.</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Verified credential awarded to <strong>Vishal Singh Rajpurohit</strong> for demonstrated expertise in advanced algorithms and computer science principles.</p>
                         </div>
                     </div>
                 `;
@@ -5404,7 +5409,7 @@ action: throttle_and_isolate_host`
     const aiKnowledgeBase = {
         why_hire: {
             userQuery: "Why should we hire Vishal?",
-            response: "<strong>Top 5 Engineering Reasons to Hire Vishal Singh Rajpuurohit:</strong><br>• <strong>Strong Algorithmic Rigor:</strong> 150+ DSA problems solved across LeetCode, CodeChef, and HackerRank (Gold Badges in Python & Problem Solving).<br>• <strong>Full-Stack Mastery:</strong> Pure Vanilla JS, Python Flask, SQL, and sub-millisecond front-end architecture.<br>• <strong>Enterprise Cybersecurity:</strong> Deep hands-on defense engineering (Zero-Trust NIST 800-207, eBPF XDP, Post-Quantum ML-KEM).<br>• <strong>High Academic Excellence:</strong> 8.9 CGPA B.Tech in Computer Science Engineering.<br>• <strong>Delivery Drive:</strong> Multiple live AI & software products built with zero framework crutches.",
+            response: "<strong>Top 5 Engineering Reasons to Hire Vishal Singh Rajpurohit:</strong><br>• <strong>Strong Algorithmic Rigor:</strong> 150+ DSA problems solved across LeetCode, CodeChef, and HackerRank (Gold Badges in Python & Problem Solving).<br>• <strong>Full-Stack Mastery:</strong> Pure Vanilla JS, Python Flask, SQL, and sub-millisecond front-end architecture.<br>• <strong>Enterprise Cybersecurity:</strong> Deep hands-on defense engineering (Zero-Trust NIST 800-207, eBPF XDP, Post-Quantum ML-KEM).<br>• <strong>High Academic Excellence:</strong> 8.9 CGPA B.Tech in Computer Science Engineering.<br>• <strong>Delivery Drive:</strong> Multiple live AI & software products built with zero framework crutches.",
             action: () => {
                 document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
             }
