@@ -1553,7 +1553,7 @@ Looking forward to discussing the role! 🚀`;
     const printResumeBtn = document.getElementById('printResumeBtn');
     if (printResumeBtn) {
         printResumeBtn.addEventListener('click', () => {
-            window.open('assets/resume.pdf', '_blank');
+            window.open('resume.html', '_blank');
         });
     }
 

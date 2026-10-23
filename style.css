@@ -2274,6 +2274,71 @@ body.cursor-hover .cursor-follower {
     font-weight: 500;
 }
 
+.resume-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-emerald);
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.resume-quick-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.college-tag {
+    color: var(--primary-cyan);
+    font-size: 0.88rem;
+    margin-top: 2px;
+}
+
+.cgpa-pill {
+    display: inline-block;
+    background: rgba(6, 182, 212, 0.1);
+    color: var(--primary-cyan);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    margin-top: 6px;
+}
+
+.credentials-badge-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.credentials-badge-list li {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.credentials-badge-list li:hover {
+    border-color: var(--primary-cyan);
+    background: rgba(6, 182, 212, 0.06);
+    transform: translateX(4px);
+}
+
 .resume-actions-group {
     display: flex;
     gap: 12px;

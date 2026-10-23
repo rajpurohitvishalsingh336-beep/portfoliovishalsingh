@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Singh Rajpurohit — Professional Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --primary-light: #e0f2fe;
+            --accent: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --sidebar-bg: #0f172a;
+            --sidebar-text: #f1f5f9;
+            --sidebar-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding: 24px 0;
+        }
+
+        /* Action Toolbar for Web View */
+        .toolbar {
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        .toolbar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toolbar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #0284c7;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #0369a1;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Resume A4 Sheet Container */
+        .resume-sheet {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 290px 1fr;
+            min-height: 1160px;
+        }
+
+        /* ================= SIDEBAR (LEFT) ================= */
+        .resume-sidebar {
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 36px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .profile-badge {
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .avatar-frame {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 14px auto;
+            border: 3px solid #0284c7;
+            padding: 3px;
+            background: rgba(2, 132, 199, 0.2);
+            box-shadow: 0 0 20px rgba(2, 132, 199, 0.4);
+            overflow: hidden;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+            margin-bottom: 4px;
+        }
+
+        .profile-role {
+            font-size: 0.8rem;
+            color: #38bdf8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #38bdf8;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        /* Contact Items */
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.82rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
+
+        .contact-item svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: #38bdf8;
+        }
+
+        .contact-item a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: #38bdf8;
+        }
+
+        /* Skills Groups */
+        .skills-group {
+            margin-bottom: 16px;
+        }
+
+        .skills-group-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f1f5f9;
+            font-size: 0.74rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .skill-tag.highlight {
+            background: rgba(2, 132, 199, 0.25);
+            border-color: rgba(56, 189, 248, 0.4);
+            color: #7dd3fc;
+        }
+
+        /* Education Card in Sidebar */
+        .edu-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .edu-degree {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .edu-college {
+            font-size: 0.78rem;
+            color: #38bdf8;
+            margin-bottom: 4px;
+        }
+
+        .edu-year {
+            font-size: 0.72rem;
+            color: var(--sidebar-muted);
+            margin-bottom: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .edu-grade {
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: #4ade80;
+        }
+
+        /* Certifications List */
+        .cert-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.76rem;
+            color: #cbd5e1;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cert-item::before {
+            content: "✓";
+            color: #4ade80;
+            font-weight: 700;
+        }
+
+        /* ================= MAIN CONTENT (RIGHT) ================= */
+        .resume-main {
+            padding: 36px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background: #ffffff;
+        }
+
+        /* Header in Main */
+        .main-header {
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .candidate-full-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
+
+        .status-badge {
+            background: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .candidate-tagline {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        /* Section Block */
+        .resume-section-block {
+            margin-bottom: 6px;
+        }
+
+        .section-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 4px;
+        }
+
+        .section-heading svg {
+            color: var(--primary);
+        }
+
+        /* Professional Summary */
+        .summary-paragraph {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Project Entry */
+        .project-entry {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .project-entry:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .project-title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .project-name {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .project-tech {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .project-bullets {
+            list-style: none;
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-size: 0.83rem;
+            color: var(--text-muted);
+        }
+
+        .project-bullets li {
+            position: relative;
+            padding-left: 16px;
+            line-height: 1.5;
+        }
+
+        .project-bullets li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 2px;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .project-bullets strong {
+            color: var(--text-main);
+        }
+
+        /* Achievements Grid */
+        .achieve-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .achieve-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .achieve-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .achieve-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 2px;
+        }
+
+        .achieve-desc {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* ================= PRINT MEDIA QUERY ================= */
+        @media print {
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+            }
+
+            .toolbar {
+                display: none !important;
+            }
+
+            .resume-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+                max-width: 100% !important;
+                min-height: auto !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            .resume-sidebar {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .resume-main {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .skill-tag, .project-tech, .status-badge, .achieve-card {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Web Navigation Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>Vishal Singh Rajpurohit — Verified CV (Executive Standard)</span>
+        </div>
+        <div class="toolbar-actions">
+            <button class="btn btn-primary" onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                <span>Print / Save as PDF</span>
+            </button>
+            <a href="assets/resume.pdf" download="Vishal_Singh_Rajpurohit_Resume.pdf" class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Direct PDF</span>
+            </a>
+            <a href="index.html" class="btn btn-secondary">
+                <span>← Back to Portfolio</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Resume Document -->
+    <main class="resume-sheet">
+        <!-- ================= LEFT SIDEBAR ================= -->
+        <aside class="resume-sidebar">
+            <!-- Profile Avatar -->
+            <div class="profile-badge">
+                <div class="avatar-frame">
+                    <img src="assets/profile.jpg" alt="Vishal Singh Rajpurohit">
+                </div>
+                <h1 class="profile-name">Vishal Singh</h1>
+                <div class="profile-role">Computer Science Engineer</div>
+            </div>
+
+            <!-- Contact Channels -->
+            <div>
+                <h2 class="sidebar-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    Contact Info
+                </h2>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <a href="mailto:rajpurohitivishalsingh336@gmail.com">rajpurohitivishalsingh336@gmail.com</a>
+                    </li>
+                    <li class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <a href="tel:+919014772804">+91 9014772804</a>
+                    </li>
+                    <li class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>Hyderabad, Telangana, India</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg>
+                        <a href="https://www.linkedin.com/in/vishal-singh-rajpurohit-136a75311" target="_blank">vishal-singh-rajpurohit-136a75311</a>
+                    </li>
+                    <li class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <a href="https://github.com/rajpurohitvishalsingh336-beep" target="_blank">rajpurohitvishalsingh336-beep</a>
+                    </li>
+                    <li class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <a href="https://rajpurohitvishalsingh336-beep.github.io/portfoliovishalsingh/" target="_blank">Live Portfolio (Click Here)</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Technical Skills -->
+            <div>
+                <h2 class="sidebar-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Skills Matrix
+                </h2>
+                
+                <div class="skills-group">
+                    <div class="skills-group-title">Languages</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Python</span>
+                        <span class="skill-tag highlight">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag highlight">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skills-group">
+                    <div class="skills-group-title">AI & Machine Learning</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Scikit-learn</span>
+                        <span class="skill-tag highlight">OpenCV</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Data Modeling</span>
+                    </div>
+                </div>
+
+                <div class="skills-group">
+                    <div class="skills-group-title">Full Stack & Backend</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">HTML5 / Modern CSS3</span>
+                        <span class="skill-tag highlight">Vanilla ES6+</span>
+                        <span class="skill-tag highlight">Flask</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="skills-group">
+                    <div class="skills-group-title">Security & Systems</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Zero-Trust Arch</span>
+                        <span class="skill-tag">eBPF XDP</span>
+                        <span class="skill-tag">Shannon Entropy</span>
+                        <span class="skill-tag">Linux CLI</span>
+                        <span class="skill-tag">Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div>
+                <h2 class="sidebar-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                    Education
+                </h2>
+                <div class="edu-card">
+                    <div class="edu-degree">B.Tech in Computer Science</div>
+                    <div class="edu-college">Bapatla Engineering College</div>
+                    <div class="edu-year">2021 – 2025 | Full-Time</div>
+                    <div class="edu-grade">★ CGPA: 8.9 / 10.0</div>
+                </div>
+            </div>
+
+            <!-- Certifications & Badges -->
+            <div>
+                <h2 class="sidebar-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    Verified Badges
+                </h2>
+                <ul class="cert-list">
+                    <li class="cert-item">HackerRank Python (Gold Badge)</li>
+                    <li class="cert-item">Problem Solving Certified (5★)</li>
+                    <li class="cert-item">150+ LeetCode DSA Solutions</li>
+                    <li class="cert-item">NPTEL Certified in Core Algorithms</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ================= RIGHT MAIN BODY ================= -->
+        <section class="resume-main">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-top">
+                    <h1 class="candidate-full-name">VISHAL SINGH RAJPUROHIT</h1>
+                    <span class="status-badge">Available Immediately</span>
+                </div>
+                <div class="candidate-tagline">Computer Science Engineer | AI & Machine Learning | Full-Stack Systems</div>
+            </header>
+
+            <!-- Professional Summary -->
+            <div class="resume-section-block">
+                <h2 class="section-heading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
+                    Executive Summary
+                </h2>
+                <p class="summary-paragraph">
+                    High-performing <strong>Computer Science Engineer (CGPA 8.9/10)</strong> with deep technical rigor across Artificial Intelligence, Machine Learning pipelines, and sub-millisecond full-stack architectures. Proven track record of independently designing, building, and deploying <strong>5+ production-grade software applications</strong> ranging from computer vision smart systems to AI-powered cybersecurity anomaly detectors. Known for strong algorithmic problem solving, clean code architecture, and zero-framework optimization.
+                </p>
+            </div>
+
+            <!-- Featured Engineering Projects -->
+            <div class="resume-section-block">
+                <h2 class="section-heading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    Featured Production Projects
+                </h2>
+
+                <!-- Project 1 -->
+                <article class="project-entry">
+                    <div class="project-title-bar">
+                        <span class="project-name">1. AI Cyber Threat & Packet Anomaly Detector (NIDS)</span>
+                        <span class="project-tech">Python · Scikit-learn · eBPF · Flask · Security</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Engineered a real-time Network Intrusion Detection System (NIDS) analyzing high-velocity packet streams.</li>
+                        <li>Implemented <strong>Shannon Information Entropy calculation ($H > 7.5$)</strong> to automatically flag zero-day encrypted payloads.</li>
+                        <li>Designed automated defensive response specifications utilizing <strong>eBPF XDP filter drivers</strong> to mitigate SYN flood anomalies at the network driver ring with zero userspace overhead.</li>
+                    </ul>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-entry">
+                    <div class="project-title-bar">
+                        <span class="project-name">2. AI Electricity Consumption Optimizer</span>
+                        <span class="project-tech">Machine Learning · Pandas · Time-Series · Python</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Architected an intelligent predictive model analyzing time-series energy telemetry to forecast consumption patterns.</li>
+                        <li>Trained anomaly detection algorithms identifying uncharacteristic spikes and energy leakage across dynamic load conditions.</li>
+                        <li>Delivered automated energy conservation recommendations resulting in a projected <strong>18% reduction</strong> in power overhead.</li>
+                    </ul>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-entry">
+                    <div class="project-title-bar">
+                        <span class="project-name">3. FinTech Insurance Fraud Detection System</span>
+                        <span class="project-tech">Random Forest · Data Modeling · Flask API · SQL</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Built an end-to-end fraud classifier predicting fraudulent insurance claims with a <strong>94.2% test accuracy rate</strong>.</li>
+                        <li>Processed multi-dimensional customer behavioral vectors, policy claim histories, and transactional anomaly features.</li>
+                        <li>Exposed high-throughput REST API endpoints consumed by an interactive analytical visualization dashboard.</li>
+                    </ul>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-entry">
+                    <div class="project-title-bar">
+                        <span class="project-name">4. Smart Attendance System via Computer Vision</span>
+                        <span class="project-tech">OpenCV · Deep Facial Embeddings · SQLite · Python</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Developed an automated facial recognition attendance management pipeline processing video feeds at <strong>60 FPS</strong>.</li>
+                        <li>Implemented face detection, landmark alignment, and biometric feature comparison against relational student records.</li>
+                        <li>Automated daily SQL record generation with anti-spoofing checks and zero manual administrative intervention.</li>
+                    </ul>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-entry">
+                    <div class="project-title-bar">
+                        <span class="project-name">5. High-Performance URL Shortener & Analytics</span>
+                        <span class="project-tech">Vanilla JS · Python Flask · Relational DB · QR Engine</span>
+                    </div>
+                    <ul class="project-bullets">
+                        <li>Built a full-stack link shortening platform delivering <strong>sub-5 millisecond redirection latency</strong>.</li>
+                        <li>Equipped with real-time geo-telemetry tracking, device/browser analytics, and dynamic vector QR code generators.</li>
+                    </ul>
+                </article>
+            </div>
+
+            <!-- Key Achievements & Engineering Strengths -->
+            <div class="resume-section-block">
+                <h2 class="section-heading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7"></path><path d="M14 14.66V17c0 .55.45 1 1 1h2"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                    Competitive Rigor & Milestones
+                </h2>
+
+                <div class="achieve-grid">
+                    <div class="achieve-card">
+                        <div class="achieve-icon">🏆</div>
+                        <div>
+                            <div class="achieve-title">150+ DSA Problems Solved</div>
+                            <div class="achieve-desc">Demonstrated algorithmic mastery across LeetCode, HackerRank, and competitive programming platforms.</div>
+                        </div>
+                    </div>
+
+                    <div class="achieve-card">
+                        <div class="achieve-icon">⚡</div>
+                        <div>
+                            <div class="achieve-title">Zero-Framework Architecture</div>
+                            <div class="achieve-desc">Engineered an interactive developer portfolio scoring 100/100 Lighthouse performance with pure HTML/CSS/JS.</div>
+                        </div>
+                    </div>
+
+                    <div class="achieve-card">
+                        <div class="achieve-icon">🎓</div>
+                        <div>
+                            <div class="achieve-title">Academic Distinction (8.9 CGPA)</div>
+                            <div class="achieve-desc">Consistent top-tier academic standing across 8 semesters at Bapatla Engineering College.</div>
+                        </div>
+                    </div>
+
+                    <div class="achieve-card">
+                        <div class="achieve-icon">🤖</div>
+                        <div>
+                            <div class="achieve-title">AI Sentinel Assistant Builder</div>
+                            <div class="achieve-desc">Architected custom NLP conversational co-pilot deployed live on GitHub Pages for recruiter queries.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
